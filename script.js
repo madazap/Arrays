@@ -5,8 +5,6 @@ let retorno=prompt("Digita el valor a retornar")
 let contador;
 let residuo;
 
-const vueltas=new Calculadora(retorno,valores);
-vueltas.getCoins();
 
 class Calculadora{
     
@@ -16,22 +14,37 @@ class Calculadora{
     }
 
     getCoins(){
-        let n;
+        let n=0;
+        
         while(n<5){
 
-            let moneda=this.retorno/this.valores[n];
+            console.log(retorno);
+            let moneda=retorno/valores[n];
             contador=parseInt(moneda);
             monedas[n]=contador;
             residuo=retorno - (contador*valores[n])
-            retorno=residuo;
+
+                if(residuo==0){
+                  break;
+                }
+                else{
+                  retorno = residuo;
+                  //console.log(retorno);
+                }
+
+            
+           
             n++;
 
         }
-            console.log(monedas.join("*"));
+            monedas.reverse();
+            console.log(monedas.join("/"));
 
     }
 
 }
 
+const vueltas = new Calculadora(retorno, valores);
 
+vueltas.getCoins();
 
